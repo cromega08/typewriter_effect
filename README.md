@@ -1,4 +1,4 @@
-# typewritter_effect
+# typewriter_effect
 
 This project was created as my first contibution to my personal challenge of 100 Days of Code.
 
