@@ -1,0 +1,94 @@
+/*GPL-3.0-or-later*/
+
+:root {
+    --bg-color: #000000;
+    --typewriterSpeed: 4s;
+    --typewriterCharacters: 26;
+    --typewriterDelay: 2s;
+}
+body {
+    margin: 0;
+    font-family: "Source Sans Pro", sans-serif;
+    min-height: 100vh;
+    display: grid;
+    place-content: center;
+    text-align: center;
+    background: var(--bg-color);
+}
+@font-face {
+    font-family: "newton_howard";
+    src: url("fonts/newton_howard/Newton\ Howard\ Font\ Italic.ttf") format("truetype");
+    font-style: italic;
+    font-weight: normal;
+}
+@font-face {
+    font-family: "second_lesson";
+    src: url("fonts/second_lesson/SecondLesson_PERSONAL_USE_ONLY.otf");
+    font-style: normal;
+    font-weight: normal;
+}
+img {
+    width: 15rem;
+    display: block;
+    margin: 0px auto;
+    opacity: 0;
+    transform: translateY(-5rem);
+    animation: fadeInUp 1s ease forwards;
+}
+
+h1 {
+    font-size: clamp(1rem, 3vw + 1rem, 4rem);
+    font-weight: 300;
+    color: #FF0000;
+    position: relative;
+    font-family: "newton_howard", monospace;
+    position: relative;
+    width: max-content;
+}
+p {
+    color: #FF0000;
+    font-family: "second_lesson", sans-serif;
+    font-size: 2rem;
+    font-weight: 300;
+    opacity: 0;
+    transform: translateY(5rem);
+    animation: fadeInUp 2s ease calc(var(--typewriterSpeed) + var(--typewriterDelay)) forwards;
+}
+h1::before,
+h1::after{
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+h1::before{
+    background: var(--bg-color);
+    width: 50rem;
+    animation: writer var(--typewriterSpeed) steps(var(--typewriterCharacters)) var(--typewriterDelay) forwards;
+}
+h1::after {
+    width: 0.125em;
+    background: #950101;
+    animation: writer var(--typewriterSpeed) steps(var(--typewriterCharacters)) var(--typewriterDelay) forwards,
+    blink 800ms steps(var(--typewriterCharacters)) infinite;
+}
+@keyframes writer {
+    to {
+        left: 100%;
+    }
+}
+
+@keyframes blink {
+    to {
+        background: transparent;
+    }
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
